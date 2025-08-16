@@ -2,39 +2,57 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* YouTube-inspired video downloader design system */
 
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --foreground: 0 0% 7%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 0 0% 7%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 0 0% 7%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 0 100% 50%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 20%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 0 0% 96%;
+    --accent-foreground: 0 0% 7%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 0 0% 90%;
+    --input: 0 0% 96%;
+    --ring: 0 100% 50%;
+
+    /* YouTube-style colors */
+    --youtube-red: 0 100% 50%;
+    --youtube-red-hover: 0 100% 45%;
+    --youtube-red-light: 0 100% 97%;
+    --youtube-dark: 0 0% 7%;
+    --youtube-grey: 0 0% 53%;
+    --youtube-light-grey: 0 0% 96%;
+    --youtube-border: 0 0% 85%;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--youtube-red)), hsl(0 100% 45%));
+    --gradient-subtle: linear-gradient(180deg, hsl(var(--background)), hsl(0 0% 98%));
+    
+    /* Shadows */
+    --shadow-youtube: 0 2px 5px 0 hsla(0, 0%, 0%, 0.16), 0 2px 10px 0 hsla(0, 0%, 0%, 0.12);
+    --shadow-hover: 0 4px 8px 0 hsla(0, 0%, 0%, 0.16), 0 4px 16px 0 hsla(0, 0%, 0%, 0.12);
+    
+    /* Transitions */
+    --transition-youtube: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 
     --radius: 0.5rem;
 
@@ -100,6 +118,43 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans;
+  }
+}
+
+@layer components {
+  /* YouTube-style button variants */
+  .btn-youtube {
+    @apply bg-primary text-primary-foreground px-4 py-2 rounded font-medium;
+    @apply hover:bg-[hsl(var(--youtube-red-hover))] transition-all duration-200;
+    @apply shadow-[var(--shadow-youtube)] hover:shadow-[var(--shadow-hover)];
+  }
+  
+  .btn-youtube-secondary {
+    @apply bg-secondary text-secondary-foreground px-4 py-2 rounded font-medium;
+    @apply hover:bg-muted transition-all duration-200;
+    @apply border border-border shadow-sm hover:shadow-md;
+  }
+  
+  /* YouTube-style input */
+  .input-youtube {
+    @apply w-full px-4 py-3 text-base bg-input border border-[hsl(var(--youtube-border))];
+    @apply rounded-full focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary;
+    @apply transition-all duration-200 placeholder:text-muted-foreground;
+  }
+  
+  /* YouTube-style search container */
+  .search-container {
+    @apply relative max-w-2xl mx-auto flex items-center;
+    @apply shadow-[var(--shadow-youtube)] rounded-full overflow-hidden;
+  }
+  
+  /* Hover animations */
+  .hover-lift {
+    @apply transition-transform duration-200 hover:scale-[1.02];
+  }
+  
+  .hover-glow {
+    @apply transition-all duration-300 hover:shadow-[0_0_20px_hsl(var(--youtube-red)/0.3)];
   }
 }
