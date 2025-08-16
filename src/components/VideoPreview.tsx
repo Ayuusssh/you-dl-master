@@ -1,4 +1,4 @@
-import { Clock, User, Eye } from "lucide-react";
+import { Clock, User, Eye, Search } from "lucide-react";
 
 interface VideoData {
   title: string;
@@ -20,7 +20,7 @@ const VideoPreview = ({ videoData, isLoading }: VideoPreviewProps) => {
       <div className="max-w-4xl mx-auto px-4 py-8">
         <div className="bg-card rounded-lg shadow-md p-6 animate-pulse">
           <div className="flex flex-col md:flex-row gap-6">
-            <div className="w-full md:w-80 h-45 bg-muted rounded-lg"></div>
+            <div className="w-full md:w-80 h-48 bg-muted rounded-lg"></div>
             <div className="flex-1 space-y-4">
               <div className="h-6 bg-muted rounded w-3/4"></div>
               <div className="h-4 bg-muted rounded w-1/2"></div>
@@ -56,7 +56,7 @@ const VideoPreview = ({ videoData, isLoading }: VideoPreviewProps) => {
             <img
               src={videoData.thumbnail}
               alt={videoData.title}
-              className="w-full h-45 object-cover rounded-lg"
+              className="w-full h-48 object-cover rounded-lg"
             />
             <div className="absolute bottom-2 right-2 bg-black bg-opacity-80 text-white px-2 py-1 rounded text-sm font-medium">
               {videoData.duration}
@@ -90,8 +90,5 @@ const VideoPreview = ({ videoData, isLoading }: VideoPreviewProps) => {
     </div>
   );
 };
-
-// Missing import fix
-import { Search } from "lucide-react";
 
 export default VideoPreview;
