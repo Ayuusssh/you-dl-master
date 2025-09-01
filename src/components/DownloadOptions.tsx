@@ -21,7 +21,7 @@ const DownloadOptions = ({ formats, isLoading, onDownload }: DownloadOptionsProp
   if (formats.length === 0 && !isLoading) {
     return null;
   }
-
+  
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">
       <div className="bg-card rounded-lg shadow-md p-6">
